@@ -1,14 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Branch } from './branch.entity';
-import { BranchRepository } from './branch.repository';
 import { ResponseUtil } from 'src/helper/response.util';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class BranchService {
   constructor(
-    @InjectRepository(Branch)
-    private branchRepository: BranchRepository,
+    @InjectRepository(Branch, 'HCM')
+    private branchRepository: Repository<Branch>,
     private readonly responseUtil: ResponseUtil,
   ) {}
 
