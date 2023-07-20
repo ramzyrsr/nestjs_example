@@ -12,16 +12,12 @@ export class BranchService {
     private readonly responseUtil: ResponseUtil,
   ) {}
 
-  async getAllBranch(employee_id): Promise<object> {
+  async getAllBranch(employee_id: string): Promise<object> {
     const found = await this.branchRepository.find({
       select: { golid: true, branch_name: true, branch_code: true },
     });
 
-    const respayload = this.responseUtil.dataResponse(
-      200,
-      found,
-      employee_id.employee_id,
-    );
+    const respayload = this.responseUtil.dataResponse(200, found, employee_id);
 
     return respayload;
   }
